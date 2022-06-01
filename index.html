@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@300&family=Itim&family=Overlock&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
 <header>
-    <h1>Weather Dashboard</h1>
+    <h1 class="title">Weather Dashboard</h1>
 </header>
 <body>
-    <aside >
+    <aside>
         <div id="searchcontainer">
-            <h2>Search for a City:</h2>
+            <h2 class="title">Search for a City:</h2>
             <input type="text" id="searchbox"></input>
             <button id="searchbtn">Search</button>
         </div>
@@ -22,14 +26,14 @@
     <main>
         <section>
             <div id="currentweather" class="placeholder">
-                <h2>Gotham June 7th, 2022 *cloud*</h2>
+                <h2 class="title">Gotham June 7th, 2022 *cloud*</h2>
                 <p>Temp: 120C</p>
                 <p>Wind: 400 MPH</p>
                 <p>Humidity: 300%</p>
                 <p>UV Index: *Colored box*</p>
             </div>
             <div id="fiveday">
-                <h3>5-Day Forecast:</h3>
+                <h3 class="title">5-Day Forecast:</h3>
                 <div id="futureweather">
                     <figure class="futureweathercard" class="placeholder">
                         <p>Date</p>
@@ -71,8 +75,9 @@
         </section>
     </main>
     <footer>
-        <h6>Created by Ivy Lovegood</h6>
+        <h4>Created by Ivy Lovegood</h4>
         <p>Powered by A bunch of shit</p>
     </footer>
 </body>
+<script src="./assets/js/script.js"></script>
 </html>
