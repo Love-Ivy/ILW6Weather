@@ -1,12 +1,19 @@
 //fetch from weather API
 //Key: 595716eb9ad5fdcbf4ae8889267dc2d6
+//Relevant to: geoCode, getWeather
 const apikey = "595716eb9ad5fdcbf4ae8889267dc2d6";
 var city = "Seattle";
 var state = "Washington;";
 var country = "US";
-var units = "metric";
+var units = "";
 var lat = "33.44";
 var lon = "-94.04";
+//Relevant to: Print
+const d = new Date();
+const date = d.toDateString();
+//Relevant to: searchbtn event listener
+const citysearch = document.querySelector("#searchbox");
+const searchbtn = document.querySelector("#searchbtn");
 
 //Call geocoding api for accurate search
 function geoCode(data) {
@@ -26,7 +33,8 @@ function geoCode(data) {
 }
 
 function getWeather(data) {
-  geoCode();
+  //   geoCode();
+  console.log("units returned: ", units);
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       lat +
@@ -47,30 +55,31 @@ function getWeather(data) {
 }
 
 //Listen for user search
-const citysearch = document.querySelector("#searchbox");
-const searchbtn = document.querySelector("#searchbtn");
 searchbtn.addEventListener("click", function () {
   city = citysearch.value;
-  getWeather();
-  //   getForecast();
+  geoCode();
 });
 
 //Populate current weather
-const d = new Date();
-const date = d.toDateString();
 function Print(data) {
   console.log("printing...");
-  console.log(data.name);
+  //city name not contained in data
   console.log(date);
-  console.log(data.main.temp);
-  console.log(data.weather[0].icon);
+  console.log(data.current.temp);
+  console.log(data.current.weather.icon);
+  console.log(data.current.wind_speed);
+  console.log(data.current.humidity);
+  console.log(data.current.uvi);
+  console.log(data.daily);
 }
 
 function parseData(data) {
   console.log("parseData", data);
   country = data[0].country;
+  city = data[0].name;
   lat = data[0].lat;
   lon = data[0].lon;
+  citysearch.value = city + ", " + country;
   if (country === "US") {
     var statename = data[0].state;
     stateNameToAbbreviation(statename);
@@ -80,26 +89,21 @@ function parseData(data) {
 }
 
 function stupidUnits(data) {
-  if (
-    data[0].country === "US" ||
-    "BS" ||
-    "KY" ||
-    "LR" ||
-    "PW" ||
-    "FM" ||
-    "MH"
-  ) {
+  console.log("stupidUnits", country);
+  let array = ["US", "BS", "KY", "LR", "PW", "FM", "MH"];
+  if (array.includes(country)) {
     units = "imperial";
     console.log("Units are stupid");
+  } else {
+    console.log("Your units are correct");
+    units = "metric";
   }
-  city = data[0].name;
-  console.log("Your units are correct");
+  getWeather();
 }
 
 //Autorun for testing
-getWeather();
-// getForecast();
-// geoCode();
+// getWeather();
+geoCode();
 // stateNameToAbbreviation(state);
 
 //Convert State Name to State Code
