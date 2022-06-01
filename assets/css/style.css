@@ -41,6 +41,9 @@ button {
   background-color: #f9bc60;
   color: #001e1d;
 }
+button:active {
+  background-color: #e16162;
+}
 
 #searchcontainer {
   border-bottom: 5px groove #e16162;
