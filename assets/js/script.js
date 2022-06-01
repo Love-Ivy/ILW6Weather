@@ -1,16 +1,15 @@
 //fetch from weather API
-//Key: 08f2ec377a9f9d2d4c2727249a9b714a
-const apikey = "08f2ec377a9f9d2d4c2727249a9b714a";
+//Key: 595716eb9ad5fdcbf4ae8889267dc2d6
+const apikey = "595716eb9ad5fdcbf4ae8889267dc2d6";
 var city = "Seattle";
 var state = "Washington;";
 var country = "US";
 var units = "metric";
-var lat = "";
-var lon = "";
+var lat = "33.44";
+var lon = "-94.04";
 
 //Call geocoding api for accurate search
 function geoCode(data) {
-  console.log("geoCode");
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
@@ -19,7 +18,7 @@ function geoCode(data) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log("Geocode" + data);
+      console.log("Geocode", data);
       parseData(data);
       stupidUnits(data);
     })
@@ -27,37 +26,24 @@ function geoCode(data) {
 }
 
 function getWeather(data) {
-  console.log("getWeather");
   geoCode();
   fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
+    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&units=" +
+      units +
+      "&exclude=hourly,minutely" +
       "&appid=" +
       apikey
   )
     .then((response) => response.json())
-    .then((data) => Print(data))
-    .catch((err) => console.error(err));
-}
-
-//fetch forecast
-function getForecast() {
-  console.log("getForecast");
-  console.log("-------------");
-  geoCode();
-  fetch(
-    "http://api.openweathermap.org/data/2.5/forecast/daily/?q=" +
-      city +
-      "&cnt=5&appid=" +
-      apikey
-  )
-    .then((response) => response.json())
     .then((data) => {
-      console.log("getForecast");
-      console.log(data);
+      console.log("getWeather", data);
+      Print(data);
     })
     .catch((err) => console.error(err));
-  console.log("--------------");
 }
 
 //Listen for user search
@@ -73,33 +59,27 @@ searchbtn.addEventListener("click", function () {
 const d = new Date();
 const date = d.toDateString();
 function Print(data) {
-  console.log(data);
-  console.log("--------------");
+  console.log("printing...");
   console.log(data.name);
-  console.log("--------------");
   console.log(date);
-  console.log("--------------");
   console.log(data.main.temp);
-  console.log("--------------");
   console.log(data.weather[0].icon);
-  console.log("--------------");
 }
 
 function parseData(data) {
-  console.log("parseData");
+  console.log("parseData", data);
   country = data[0].country;
   lat = data[0].lat;
   lon = data[0].lon;
   if (country === "US") {
     var statename = data[0].state;
     stateNameToAbbreviation(statename);
-    console.log("checkUS sees " + state);
+    console.log("state code: " + state);
     citysearch.value = data[0].name + " " + state + ", " + data[0].country;
   }
 }
 
 function stupidUnits(data) {
-  console.log("stupidUnits");
   if (
     data[0].country === "US" ||
     "BS" ||
@@ -113,11 +93,12 @@ function stupidUnits(data) {
     console.log("Units are stupid");
   }
   city = data[0].name;
+  console.log("Your units are correct");
 }
 
 //Autorun for testing
-// getWeather();
-getForecast();
+getWeather();
+// getForecast();
 // geoCode();
 // stateNameToAbbreviation(state);
 
