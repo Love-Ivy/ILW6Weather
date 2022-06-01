@@ -42,16 +42,10 @@ button {
   color: #001e1d;
 }
 
-#currentweather {
-  border: 5px groove #e16162;
-  border-radius: 5px;
-  padding: 10px 0px 15px 30px;
-  margin-right: 30px;
-}
-
 #searchcontainer {
   border-bottom: 5px groove #e16162;
   margin: 30px;
+  margin-bottom: 0px;
   display: flex;
   flex-flow: column nowrap;
   gap: 15px;
@@ -67,7 +61,29 @@ button {
   border-radius: 5px;
   border: 0px;
 }
+#savedsearches {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 20px 30px 30px 30px;
+  gap: 15px;
+}
+.savedcity {
+  background-color: #abd1c6;
+  border-radius: 5px;
+  color: #001e1d;
+  height: 30px;
+  padding: 10px 0 5px 0;
+  text-align: center;
+  text-justify: auto;
+  margin: 0px;
+}
 
+#currentweather {
+  border: 5px groove #e16162;
+  border-radius: 5px;
+  padding: 10px 0px 15px 30px;
+  margin-right: 30px;
+}
 #futureweather {
   display: flex;
   flex-flow: row nowrap;
@@ -76,6 +92,7 @@ button {
 }
 .futureweathercard {
   background-color: #abd1c6;
+  border-radius: 5px;
   color: #001e1d;
   width: 100%;
   margin: 0;
@@ -89,4 +106,8 @@ footer {
 footer p {
   font-size: small;
   margin-left: 2px;
+}
+
+.hidden {
+  display: none;
 }
