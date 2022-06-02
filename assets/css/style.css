@@ -8,11 +8,23 @@ body {
   gap: 15px;
   margin: 0;
 }
+p {
+  margin: 5px 0 5px 0;
+}
+
+.inline {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 7px;
+}
 
 .title {
   color: #fffffe;
   text-shadow: 1px 2px 2px #001312;
   font-family: "Overlock", cursive;
+}
+.title .inline {
+  gap: 9px;
 }
 
 header {
@@ -84,9 +96,23 @@ button:active {
 #currentweather {
   border: 5px groove #e16162;
   border-radius: 5px;
-  padding: 10px 0px 15px 30px;
+  padding: 10px 0px 20px 30px;
   margin-right: 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
 }
+#currentcity,
+#currentdate {
+  align-self: center;
+}
+#currentuvindex {
+  background-color: #fcbd22;
+  border-radius: 5px;
+  padding: 1px 3px 1px 3px;
+  text-shadow: 1px 0px 5px #001312, -1px 0px 5px #001312;
+}
+
 #futureweather {
   display: flex;
   flex-flow: row nowrap;
@@ -101,6 +127,14 @@ button:active {
   margin: 0;
   padding: 15px;
   font-size: 16px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+.icon {
+  height: 50%;
+  width: 50%;
+  margin: auto;
 }
 
 footer {
