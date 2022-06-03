@@ -92,6 +92,9 @@ button:active {
   text-justify: auto;
   margin: 0px;
 }
+.savedcity:active {
+  background-color: #e16162;
+}
 
 #currentweather {
   border: 5px groove #e16162;
@@ -140,9 +143,14 @@ button:active {
 footer {
   margin: 30px;
 }
-footer p {
+footer h4 {
+  margin: 0 0 15px 2px;
+}
+footer a {
   font-size: small;
   margin-left: 2px;
+  color: #abd1c6;
+  font-family: "Itim", cursive;
 }
 
 .hidden {

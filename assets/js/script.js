@@ -124,7 +124,6 @@ function getWeather(data) {
 
 //Populate weather data onto page
 function Print(data) {
-  console.log("printing data...");
   hidePlaceholders();
   currentcity.innerHTML = city;
   currentdate.innerHTML = date.toLocaleDateString(dateformat, options);
@@ -233,7 +232,6 @@ function printSavedCities() {
 
 //Convert State Name to State Code
 function stateNameToAbbreviation(statename) {
-  console.log("stateNameToAbbreviation");
   let states = {
     "arizona": "AZ",
     "alabama": "AL",
