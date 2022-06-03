@@ -208,7 +208,7 @@ function hidePlaceholders() {
 //Add city to localstorage
 function saveCity() {
   if (!savedcities.includes(city)) {
-    savedcities.push(city);
+    savedcities.unshift(city);
     let packcity = JSON.stringify(savedcities);
     localStorage.setItem("citykey", packcity);
   }
@@ -217,6 +217,12 @@ function saveCity() {
 //Display previous searches on page
 function printSavedCities() {
   savedsearches.innerHTML = ""; //clear display
+  console.log(savedcities);
+  if (savedcities.length == 8) {
+    savedcities.pop();
+    console.log("popped");
+    console.log(savedcities);
+  }
   for (let i = 0; i < savedcities.length; i++) {
     const cityname = savedcities[i];
     let citycard = document.createElement("h3");
