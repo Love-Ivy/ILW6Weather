@@ -75,6 +75,7 @@ button:active {
   font-size: 18px;
   border-radius: 5px;
   border: 0px;
+  cursor: pointer;
 }
 #savedsearches {
   display: flex;
@@ -91,6 +92,7 @@ button:active {
   text-align: center;
   text-justify: auto;
   margin: 0px;
+  cursor: pointer;
 }
 .savedcity:active {
   background-color: #e16162;
