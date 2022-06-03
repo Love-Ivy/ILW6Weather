@@ -55,7 +55,7 @@ searchbtn.addEventListener("click", function () {
 //Call geocoding api for accurate search
 function geoCode(data) {
   fetch(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
       "&limit=1&appid=" +
       apikey
@@ -129,7 +129,7 @@ function Print(data) {
   currentdate.innerHTML = date.toLocaleDateString(dateformat, options);
   let imgcode = data.current.weather[0].icon;
   let imgalt = data.current.weather[0].description;
-  currenticon.src = "http://openweathermap.org/img/wn/" + imgcode + "@2x.png";
+  currenticon.src = "https://openweathermap.org/img/wn/" + imgcode + "@2x.png";
   currenticon.title = imgalt;
   currenttemp.innerHTML = data.current.temp + tempunit;
   currentwind.innerHTML = data.current.wind_speed + windunit;
@@ -165,7 +165,7 @@ function Print(data) {
     let fimagealt = daily.weather[0].description;
     let ficon = document.createElement("img");
     ficon.classList.add("icon");
-    ficon.src = "http://openweathermap.org/img/wn/" + fimgcode + "@2x.png";
+    ficon.src = "https://openweathermap.org/img/wn/" + fimgcode + "@2x.png";
     ficon.title = fimagealt;
     day.appendChild(ficon);
 
